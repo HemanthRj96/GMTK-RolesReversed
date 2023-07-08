@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ProjectileHandler : MonoBehaviour
+public class ProjectileSpawner : MonoBehaviour
 {
     // fields
 
@@ -15,11 +15,17 @@ public class ProjectileHandler : MonoBehaviour
 
     // public methods
 
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+            SpawnProjectile();
+    }
+
     public void SpawnProjectile()
     {
         var projectile = Instantiate(_projectilePrefab, _spawnPoint.position, _spawnPoint.rotation);
         var rb = projectile.GetComponent<Rigidbody>();
         rb.AddForce(_spawnPoint.forward * _projectileVelocity);
-        Destroy(projectile, 20);
+        Destroy(projectile, _projectileLifetime);
     }
 }

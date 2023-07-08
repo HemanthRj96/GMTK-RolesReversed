@@ -12,7 +12,7 @@ public class PlatformController : MonoBehaviour
 
     Vector3 _axisValue;
     float _rotationValue;
-    bool _state;
+    bool _state = true;
 
 
     // public methods
